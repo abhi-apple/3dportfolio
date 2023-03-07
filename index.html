@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, target-densityDpi=device-dpi, minimal-ui"
+    />
+    <title>Abhinay Reddy</title>
+  </head>
+  <body class="light-theme">
+    <div class="experience">
+      <canvas class="experience-canvas"></canvas>
+    </div>
+
+    <!-- Preloader -->
+    <div class="preloader">
+      <div class="preloader-wrapper">
+        <div class="loading">
+          <div class="circle"></div>
+          <div class="circle"></div>
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page" asscroll-container>
+      <div class="toggle-bar">
+        <div class="sun-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
+            <path
+              fill="currentColor"
+              d="M12 5Q11.575 5 11.288 4.712Q11 4.425 11 4V2Q11 1.575 11.288 1.287Q11.575 1 12 1Q12.425 1 12.713 1.287Q13 1.575 13 2V4Q13 4.425 12.713 4.712Q12.425 5 12 5ZM16.95 7.05Q16.675 6.775 16.675 6.362Q16.675 5.95 16.95 5.65L18.35 4.225Q18.65 3.925 19.062 3.925Q19.475 3.925 19.775 4.225Q20.05 4.5 20.05 4.925Q20.05 5.35 19.775 5.625L18.35 7.05Q18.075 7.325 17.65 7.325Q17.225 7.325 16.95 7.05ZM20 13Q19.575 13 19.288 12.712Q19 12.425 19 12Q19 11.575 19.288 11.287Q19.575 11 20 11H22Q22.425 11 22.712 11.287Q23 11.575 23 12Q23 12.425 22.712 12.712Q22.425 13 22 13ZM12 23Q11.575 23 11.288 22.712Q11 22.425 11 22V20Q11 19.575 11.288 19.288Q11.575 19 12 19Q12.425 19 12.713 19.288Q13 19.575 13 20V22Q13 22.425 12.713 22.712Q12.425 23 12 23ZM5.65 7.05 4.225 5.65Q3.925 5.35 3.925 4.925Q3.925 4.5 4.225 4.225Q4.5 3.95 4.925 3.95Q5.35 3.95 5.625 4.225L7.05 5.65Q7.325 5.925 7.325 6.35Q7.325 6.775 7.05 7.05Q6.75 7.325 6.35 7.325Q5.95 7.325 5.65 7.05ZM18.35 19.775 16.95 18.35Q16.675 18.05 16.675 17.638Q16.675 17.225 16.95 16.95Q17.225 16.675 17.638 16.675Q18.05 16.675 18.35 16.95L19.775 18.35Q20.075 18.625 20.062 19.05Q20.05 19.475 19.775 19.775Q19.475 20.075 19.05 20.075Q18.625 20.075 18.35 19.775ZM2 13Q1.575 13 1.288 12.712Q1 12.425 1 12Q1 11.575 1.288 11.287Q1.575 11 2 11H4Q4.425 11 4.713 11.287Q5 11.575 5 12Q5 12.425 4.713 12.712Q4.425 13 4 13ZM4.225 19.775Q3.95 19.5 3.95 19.075Q3.95 18.65 4.225 18.375L5.65 16.95Q5.925 16.675 6.338 16.675Q6.75 16.675 7.05 16.95Q7.35 17.25 7.35 17.663Q7.35 18.075 7.05 18.375L5.65 19.775Q5.35 20.075 4.925 20.075Q4.5 20.075 4.225 19.775ZM12 18Q9.5 18 7.75 16.25Q6 14.5 6 12Q6 9.5 7.75 7.75Q9.5 6 12 6Q14.5 6 16.25 7.75Q18 9.5 18 12Q18 14.5 16.25 16.25Q14.5 18 12 18ZM12 16Q13.65 16 14.825 14.825Q16 13.65 16 12Q16 10.35 14.825 9.175Q13.65 8 12 8Q10.35 8 9.175 9.175Q8 10.35 8 12Q8 13.65 9.175 14.825Q10.35 16 12 16Z"
+            />
+          </svg>
+        </div>
+        <button class="toggle-button">
+          <div class="toggle-circle"></div>
+        </button>
+        <div class="moon-wrapper">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
+            <path
+              fill="currentColor"
+              d="M12 21Q8.25 21 5.625 18.375Q3 15.75 3 12Q3 8.25 5.625 5.625Q8.25 3 12 3Q12.35 3 12.688 3.025Q13.025 3.05 13.35 3.1Q12.325 3.825 11.713 4.987Q11.1 6.15 11.1 7.5Q11.1 9.75 12.675 11.325Q14.25 12.9 16.5 12.9Q17.875 12.9 19.025 12.287Q20.175 11.675 20.9 10.65Q20.95 10.975 20.975 11.312Q21 11.65 21 12Q21 15.75 18.375 18.375Q15.75 21 12 21ZM12 19Q14.2 19 15.95 17.788Q17.7 16.575 18.5 14.625Q18 14.75 17.5 14.825Q17 14.9 16.5 14.9Q13.425 14.9 11.262 12.738Q9.1 10.575 9.1 7.5Q9.1 7 9.175 6.5Q9.25 6 9.375 5.5Q7.425 6.3 6.213 8.05Q5 9.8 5 12Q5 14.9 7.05 16.95Q9.1 19 12 19ZM11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Q11.75 12.25 11.75 12.25Z"
+            />
+          </svg>
+        </div>
+      </div>
+
+      <div class="page-wrapper" asscroll>
+        <section class="hero">
+          <div class="hero-wrapper">
+            <!-- Intro Stuff -->
+
+            <div class="intro-text">
+              Coding is not just about what you know, but what you can figure
+              out
+            </div>
+            <div class="arrow-svg-wrapper">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24">
+                <path
+                  fill="currentColor"
+                  d="M12 14.95q-.2 0-.375-.063-.175-.062-.325-.212L6.675 10.05q-.275-.275-.262-.688.012-.412.287-.687.275-.275.7-.275.425 0 .7.275l3.9 3.9 3.925-3.925q.275-.275.688-.263.412.013.687.288.275.275.275.7 0 .425-.275.7l-4.6 4.6q-.15.15-.325.212-.175.063-.375.063Z"
+                />
+              </svg>
+            </div>
+
+            <div class="hero-main">
+              <h1 class="hero-main-title">Abhinay Reddy</h1>
+              <p class="hero-main-description">MERN,BLOCKCHAIN Developer</p>
+              <p class="hero-main-description">
+                <a
+                  href="https://drive.google.com/file/d/1-rV07xWOMHaxnRYIjEeN40ir1xYP3k4G/view?usp=sharing"
+                  target="_blank"
+                >
+                  <button class="custom-btn btn-6">
+                    <span>Resume</span>
+                  </button>
+                </a>
+              </p>
+            </div>
+
+            <div class="hero-second">
+              <p class="hero-second-subheading first-sub">Abhinay Reddy</p>
+              <p class="hero-second-subheading second-sub">Portfolio</p>
+            </div>
+          </div>
+        </section>
+
+        <div class="first-move section-margin"></div>
+
+        <section class="first-section section left">
+          <div class="progress-wrapper progress-bar-wrapper-left">
+            <div class="progress-bar"></div>
+          </div>
+
+          <div class="section-intro-wrapper">
+            <h1 class="section-title">
+              <span class="section-title-text">About Me</span>
+              <div class="section-title-decoration styleOne"></div>
+              <div class="section-title-decoration styleTwo"></div>
+              <div class="section-title-decoration styleThree"></div>
+            </h1>
+            <span class="section-number">01</span>
+          </div>
+
+          <div class="section-detail-wrapper">
+            <!-- <h3 class="section-heading">Hello!</h3> -->
+            <p class="section-text">
+              🎓 Pre-final year student at Vellore Institute of Technology
+              (VIT), studying Computer Science
+            </p>
+            <p class="section-text">
+              💻 Proficient in
+              <strong>
+                Python programming, C++, data structures, and algorithms
+              </strong>
+            </p>
+            <p class="section-text">
+              🚀 Developed around <strong>30+ projects</strong> using various
+              tech stacks
+            </p>
+            <p class="section-text">
+              🎨 Experienced front-end developer with over
+              <strong>1 year </strong>in the industry
+            </p>
+            <p class="section-text">
+              🔥 Highly motivated and enthusiastic about staying current in the
+              tech industry
+            </p>
+            <p class="section-text">
+              🌟 Dedicated to consistently learning and acquiring new skills to
+              advance my career
+            </p>
+            <p class="section-text">
+              <strong>Skills: </strong> Python, C++, React JS, Next JS,
+              Solidity, Ethereum Blockchain, MongoDB (basic), Machine Learning
+            </p>
+          </div>
+          <div class="progress-wrapper progress-bar-wrapper-left">
+            <div class="progress-bar"></div>
+          </div>
+          <div class="section-intro-wrapper">
+            <h1 class="section-title">
+              <span class="section-title-text">My Projects</span>
+              <div class="section-title-decoration styleOne"></div>
+              <div class="section-title-decoration styleTwo"></div>
+              <div class="section-title-decoration styleThree"></div>
+            </h1>
+            <span class="section-number">02</span>
+          </div>
+
+          <div class="section-detail-wrapper">
+            <!-- <h3 class="section-heading">Hello!</h3> -->
+            <div class="project-card" style="margin-bottom: 30px">
+              <div class="project-title" style="margin-bottom: 10px">
+                <h2>MOLO</h2>
+              </div>
+              <div class="project-description">
+                <p class="section-text">
+                  <span style="font-weight: 500; font-style: italic">
+                    🎬 User-friendly movie streaming :
+                  </span>
+                  Our website makes it easy to search and save movies to watch
+                  later.
+                </p>
+                <p class="section-text">
+                  <span style="font-weight: 500; font-style: italic">
+                    🔍 Efficient use of modern tech :
+                  </span>
+                  Built with
+                  <span style="font-style: italic; font-weight: bold"
+                    >Next JS, Tailwind CSS, and React JS</span
+                  >, ensuring a fast, reliable, and easy-to-use experience.
+                </p>
+
+                <p class="section-text">
+                  <span style="font-weight: 500; font-style: italic">
+                    💻Perfect for movie enthusiasts:
+                  </span>
+                  Discover new movies and keep track of your favorites with our
+                  search and personalized watchlist features.
+                </p>
+              </div>
+              <div class="frame">
+                <button
+                  class="custom-btn btn-3"
+                  onclick="window.open('https://drive.google.com/file/d/1U3ko3_-N93vMwlowix6FDZguEz27V7u7/view?usp=share_link', '_blank')"
+                >
+                  <span>Demo Video</span>
+                </button>
+                <button
+                  onclick="window.open('https://molow.netlify.app/', '_blank')"
+                  class="custom-btn btn-11"
+                >
+                  Live Site
+                  <div class="dot"></div>
+                </button>
+                <button
+                  onclick="window.open('https://github.com/abhi-apple/MOLO', '_blank')"
+                  class="custom-btn btn-12"
+                >
+                  <span>GitHub</span><span>Source Code</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-card" style="margin-bottom: 30px">
+              <div class="project-title" style="margin-bottom: 10px">
+                <h2>Apple Cart</h2>
+              </div>
+              <div class="project-description">
+                <p class="section-text">
+                  <span style="font-weight: 500; font-style: italic">
+                    🛍️ E-Commerce Website :
+                  </span>
+                  Our website makes it easy to search and save movies to watch
+                  later.
+                </p>
+                <p class="section-text">
+                  <span style="font-weight: 500; font-style: italic">
+                    💻 Attractive UI:
+                  </span>
+                  Built with
+                  <span style="font-style: italic; font-weight: bold"
+                    >Next JS, React JS, and Sanity CMS</span
+                  >
+                </p>
+
+                <p class="section-text">
+                  <span style="font-weight: 500; font-style: italic">
+                    💳 Real Payment Method:
+                  </span>
+                  The website provides a smooth user experience with an
+                  attractive UI that engages visitors and encourages them to
+                  explore and make purchases.
+                </p>
+              </div>
+              <div class="frame">
+                <button
+                  class="custom-btn btn-3"
+                  onclick="window.open(' https://drive.google.com/file/d/1TcaFAgi6QdEOP46te0NgDttwp-EEyL49/view?usp=share_link', '_blank')"
+                >
+                  <span>Demo Video</span>
+                </button>
+                <button
+                  onclick="window.open('https://apple-cart.vercel.app/', '_blank')"
+                  class="custom-btn btn-11"
+                >
+                  Live Site
+                  <div class="dot"></div>
+                </button>
+                <button
+                  onclick="window.open('https://github.com/abhi-apple/Apple-Cart', '_blank')"
+                  class="custom-btn btn-12"
+                >
+                  <span>GitHub</span><span>Source Code</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-card" style="margin-bottom: 30px">
+              <div class="project-title" style="margin-bottom: 10px">
+                <h2>Ethcrypt</h2>
+              </div>
+              <div class="project-description">
+                <p class="section-text">
+                  <span style="font-style: italic">
+                    💰 Secure Cryptocurrency Transfers :
+                  </span>
+                  Our website makes it easy to search and save movies to watch
+                  later.
+                </p>
+                <p class="section-text">
+                  <span style="font-style: italic">
+                    🚀 Built with Cutting-Edge Technologies :
+                  </span>
+                  Ethcrypt is built with the latest technologies such as
+                  <span style="font-style: italic; font-weight: bold"
+                    >ReactJS, Solidity, and Tailwind CSS, Solidity </span
+                  >, ensuring that the platform is efficient, scalable, and
+                  future-proof.
+                </p>
+
+                <p class="section-text">
+                  <span style="font-style: italic">
+                    🔒 Blockchain Technology :
+                  </span>
+                  Leveraging the power of blockchain technology, Ethcrypt
+                  ensures that all transactions are recorded on an immutable
+                  ledger, providing transparency and traceability.
+                </p>
+              </div>
+              <div class="frame">
+                <button
+                  class="custom-btn btn-3"
+                  onclick="window.open(' https://drive.google.com/file/d/1Jw8JoXw0rW8qXlnER3ISoMTcGdwKpj4b/view?usp=share_link', '_blank')"
+                >
+                  <span>Demo Video</span>
+                </button>
+                <button
+                  onclick="window.open('https://ethcrypt.netlify.app/', '_blank')"
+                  class="custom-btn btn-11"
+                >
+                  Live Site
+                  <div class="dot"></div>
+                </button>
+                <button
+                  onclick="window.open('https://github.com/abhi-apple/Ethcrypt', '_blank')"
+                  class="custom-btn btn-12"
+                >
+                  <span>GitHub</span><span>Source Code</span>
+                </button>
+              </div>
+            </div>
+            <div class="project-card" style="margin-bottom: 30px">
+              <div class="project-title" style="margin-bottom: 10px">
+                <h2>Cryptex</h2>
+              </div>
+              <div class="project-description">
+                <p class="section-text">
+                  <span style="font-style: italic">
+                    🌐 Comprehensive coverage :
+                  </span>
+                  Our website makes it easy to search and save movies to watch
+                  later.
+                </p>
+                <p class="section-text">
+                  <span style="font-style: italic">
+                    🚀 Built with cutting-edge technologies like
+                  </span>
+                  Built with
+                  <span style="font-style: italic; font-weight: bold"
+                    >React.js, Antd, and Chart</span
+                  >, for smooth and seamless user experience.
+                </p>
+
+                <p class="section-text">
+                  <span style="font-style: italic"> 📊 API integration:: </span>
+                  Cryptex (A-Z) is integrated with various APIs to provide you
+                  with the latest data and news. This means you can rely on the
+                  accuracy and reliability of the information provided, as it is
+                  sourced from some of the most reputable crypto data providers
+                  in the market.
+                </p>
+              </div>
+              <div class="frame">
+                <button
+                  onclick="window.open('https://drive.google.com/file/d/12wXL73jHVIhKyvSaKYBB4zxaNtRDd2Ek/view?usp=sharing', '_blank')"
+                  class="custom-btn btn-3"
+                >
+                  <span>Demo Video</span>
+                </button>
+                <button
+                  onclick="window.open('https://cryptex2.netlify.app/', '_blank')"
+                  class="custom-btn btn-11"
+                >
+                  Live Site
+                  <div class="dot"></div>
+                </button>
+                <button
+                  onclick="window.open('https://github.com/abhi-apple/Cryptex', '_blank')"
+                  class="custom-btn btn-12"
+                >
+                  <span>GitHub</span><span>Source Code</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="second-move section-margin"></div>
+
+        <section class="second-section section right">
+          <div class="progress-wrapper progress-bar-wrapper-right">
+            <div class="progress-bar blue-background"></div>
+          </div>
+
+          <div class="section-intro-wrapper blue-text blue-border">
+            <h1 class="section-title blue-text blue-border">
+              <span class="section-title-text blue-text">My Experience</span>
+              <div class="section-title-decoration styleOne blue-border"></div>
+              <div class="section-title-decoration styleTwo blue-border"></div>
+              <div
+                class="section-title-decoration styleThree blue-background blue-border"
+              ></div>
+            </h1>
+            <span class="section-number blue-text">03</span>
+          </div>
+
+          <div class="section-detail-wrapper">
+            <div>
+              <h3 class="section-heading">
+                Laserpay
+                <span class="working-duration">(Jan 23 - Present)</span>
+              </h3>
+              <p class="designation">Blockchain Intern</p>
+              <div class="section-description">
+                <p class="section-text">
+                  🏆🎮 Designing a customer rewards program with tier-based
+                  rewards and engaging game design features.
+                </p>
+                <p class="section-text">
+                  🚪💳 Creating a frictionless customer experience with easy
+                  sign-up and accessible rewards portal.
+                </p>
+                <p class="section-text">
+                  📊💬 Utilising real-time data for improved customer insights
+                  and engagement.
+                </p>
+                <p class="section-text">
+                  🤝🤝 Integrating brand partnerships into the tech stack for
+                  enhanced customer relationships.
+                </p>
+              </div>
+            </div>
+            <div>
+              <h3 class="section-heading">
+                BlockMatrix IT Solutions,
+                <span class="working-duration">(July 22 - Oct 22)</span>
+              </h3>
+              <p class="designation">Front-End Intern</p>
+              <div class="section-description">
+                <p class="section-text">
+                  👨‍💻 Worked as a React Js Developer, connecting front-end with
+                  blockchain and smart contracts.💻🌐🔗💰
+                </p>
+                <p class="section-text">
+                  👨‍💻 Developed an NFT platform for creation, transaction, and
+                  bidding of NFTs.🎨💰💸💻
+                </p>
+                <p class="section-text">
+                  👨‍💻 Built a healthcare website for direct interaction between
+                  patients and doctors and appointment booking at listed
+                  hospitals.🏥💻👨‍⚕️👩‍⚕️📅
+                </p>
+                <p class="section-text">
+                  👨‍💻 Utilized professional and attractive language to present
+                  projects on the resume📝💼💻👔
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="section-intro-wrapper blue-text blue-border">
+            <h1 class="section-title blue-text blue-border">
+              <span class="section-title-text blue-text"
+                >Achievements Coding</span
+              >
+              <div class="section-title-decoration styleOne blue-border"></div>
+              <div class="section-title-decoration styleTwo blue-border"></div>
+              <div
+                class="section-title-decoration styleThree blue-background blue-border"
+              ></div>
+            </h1>
+            <span class="section-number blue-text">04</span>
+          </div>
+          <div class="section-detail-wrapper">
+            <!-- <h3 class="section-heading">Hello!</h3> -->
+            <p class="section-text">
+              🏆 Jee Advanced (2020) - <strong>26091(AIR)</strong> Top 3% .
+            </p>
+            <p class="section-text">
+              🏆 Technical Core member <strong>Cyber Club</strong>. (Aug 22-
+              Current )
+            </p>
+            <p class="section-text">
+              🏆 Secured a position in <strong>TOP 10</strong> in Ideation stage
+              of <strong>HBTU</strong>, Mega Entrepreneurship Conclave.
+            </p>
+            <p class="section-text">
+              <strong>🏆 Leetcode (450+)</strong> ,CodeChef -
+              <strong>3 Star max(1642)</strong>,
+            </p>
+
+            <!-- <h3 class="section-heading">Lorem Ipsum</h3>
+            <p class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic expedita qui quae officiis, magni velit iste repellat consequuntur temporibus. Quasi atque officia iste beatae rerum, harum itaque accusamus. At, natus?</p> -->
+            <!-- <h3 class="section-heading">Lorem Ipsum</h3>
+            <p class="section-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic expedita qui quae officiis, magni velit iste repellat consequuntur temporibus. Quasi atque officia iste beatae rerum, harum itaque accusamus. At, natus?</p> -->
+          </div>
+        </section>
+
+        <div class="third-move section-margin"></div>
+
+        <section class="third-section section left">
+          <div class="progress-wrapper progress-bar-wrapper-left">
+            <div class="progress-bar green-background"></div>
+          </div>
+
+          <div class="section-intro-wrapper green-text green-border">
+            <h1 class="section-title green-text green-border">
+              <span class="section-title-text green-text">Contact Me</span>
+              <div class="section-title-decoration styleOne green-border"></div>
+              <div class="section-title-decoration styleTwo green-border"></div>
+              <div
+                class="section-title-decoration styleThree green-background green-border"
+              ></div>
+            </h1>
+            <span class="section-number green-text">03</span>
+          </div>
+          <!-- 
+          <div class="section-detail-wrapper">
+            <form
+              action="#"
+              onsubmit="sendEmail(); reset(); return false"
+              method="post"
+            >
+              <h2>Contact Us</h2>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button onclick="sendEmail()" type="submit">Send Message</button>
+            </form>
+          </div> -->
+          <div class="section-detail-wrapper">
+            <form action="https://formspree.io/f/myyajaor" method="POST">
+              <h2>Contact Me</h2>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+              </div>
+              <button class="fbtn" type="submit">Send Message</button>
+            </form>
+
+            <div class="find-me-on">
+              <h2>Find me on:</h2>
+              <div class="icons">
+                <a href="https://leetcode.com/abhinay-thor/" target="_blank">
+                  <svg
+                    role="img"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="IconChangeColor"
+                    height="30"
+                    width="30"
+                  >
+                    <title>LeetCode</title>
+                    <path
+                      d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"
+                      id="mainIconPathAttribute"
+                    ></path>
+                  </svg>
+                </a>
+                <a href="/Abhinay pic resume.pdf" download target="_blank">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="25"
+                    height="25"
+                    fill="currentColor"
+                    class="bi bi-download"
+                    viewBox="0 0 16 16"
+                    id="IconChangeColor"
+                  >
+                    <path
+                      d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"
+                      id="mainIconPathAttribute"
+                    ></path>
+                    <path
+                      d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"
+                      id="mainIconPathAttribute"
+                    ></path>
+                  </svg>
+                </a>
+
+                <a href="https://github.com/abhi-apple" target="_blank"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="30"
+                    height="30"
+                    fill="currentColor"
+                    class="bi bi-github"
+                    viewBox="0 0 16 16"
+                    id="IconChangeColor"
+                  >
+                    <path
+                      d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+                      id="mainIconPathAttribute"
+                    ></path>
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/abhinay-reddy-9375a1203/"
+                  target="_blank"
+                  ><svg
+                    width="30"
+                    height="30"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    id="IconChangeColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M1 2.83783C1 2.35041 1.19363 1.88295 1.53829 1.53829C1.88295 1.19363 2.35041 1 2.83783 1H21.1611C21.4025 1 21.6415 1.04754 21.8644 1.1399C22.0874 1.23226 22.29 1.36763 22.4607 1.53829C22.6313 1.70895 22.7667 1.91155 22.8591 2.13452C22.9514 2.3575 22.999 2.59648 22.999 2.83783V21.1611C22.999 21.4025 22.9514 21.6415 22.8591 21.8644C22.7667 22.0874 22.6313 22.29 22.4607 22.4607C22.29 22.6313 22.0874 22.7667 21.8644 22.8591C21.6415 22.9514 21.4025 22.999 21.1611 22.999H2.83783C2.35041 22.999 1.88295 22.8053 1.53829 22.4607C1.19363 22.116 1 21.6486 1 21.1611V2.83783ZM9.70792 9.38711H12.687V10.884C13.1164 10.0232 14.2168 9.24961 15.8699 9.24961C19.0387 9.24961 19.7908 10.9628 19.7908 14.1063V19.9283H16.5826V14.8222C16.5826 13.0321 16.1532 12.0224 15.061 12.0224C13.5463 12.0224 12.9161 13.1109 12.9161 14.8222V19.9283H9.70792V9.38711ZM4.20818 19.7908H7.41637V9.24961H4.20818V19.7908ZM7.87468 5.81227C7.87468 6.08311 7.82133 6.3513 7.71769 6.60152C7.61404 6.85174 7.46212 7.0791 7.27061 7.27061C7.0791 7.46212 6.85174 7.61404 6.60152 7.71769C6.3513 7.82133 6.08311 7.87468 5.81227 7.87468C5.54144 7.87468 5.27325 7.82133 5.02303 7.71769C4.7728 7.61404 4.54545 7.46212 4.35393 7.27061C4.16242 7.0791 4.01051 6.85174 3.90686 6.60152C3.80322 6.3513 3.74987 6.08311 3.74987 5.81227C3.74987 5.26529 3.96716 4.74071 4.35393 4.35393C4.74071 3.96716 5.26529 3.74987 5.81227 3.74987C6.35926 3.74987 6.88384 3.96716 7.27061 4.35393C7.65739 4.74071 7.87468 5.26529 7.87468 5.81227Z"
+                      fill="black"
+                      id="mainIconPathAttribute"
+                    ></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
